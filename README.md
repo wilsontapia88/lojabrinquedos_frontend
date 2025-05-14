@@ -105,14 +105,23 @@ Exemplo de requisição com token:
     params,
   });
 ```
-## 📝 Desafio com Ruidos
+## 🧪 Integração com Dados com Ruído
 
-Foi ciada uma rota no backend para pegar e normalizar o exemploi que foi encaminhado no
-desafio esta sendo consomida na rota:
+Foi criada uma rota no backend que retorna um exemplo com dados "ruidosos", conforme enviado no desafio técnico.
 
-- `GET /api/teste-clientes` – Rota que trz o exemplo encaminado com ruido  
+- `GET /api/teste-clientes` – Rota que retorna os dados com ruído, enviados no exemplo do desafio
 
-ele esta sendo tracido e tratado adapters, e juntado a os dados que vem sem ruido para depois aparecer na listagem de clientes
+Esses dados estão sendo **consumidos no frontend** e **normalizados por meio de adapters**. Após o tratamento, os dados limpos são **unificados com os clientes válidos** e então exibidos na listagem principal de clientes.
+
+Esse processo garante que tanto os dados simulados com problemas quanto os dados reais estejam visíveis de forma uniforme na interface do usuário.
+
+### 💡 Exemplo de fluxo:
+
+1. Dados "com ruído" são carregados da rota `/api/teste-clientes`.
+2. Um adapter remove ou corrige campos inválidos, padroniza formatos e valida entradas.
+3. Os dados tratados são combinados com os demais clientes da API `/api/clientes`.
+4. O resultado final é renderizado na listagem de clientes do painel.
+---
 
 ## 📝 Observações
 
